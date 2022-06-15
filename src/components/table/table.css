@@ -1,0 +1,109 @@
+.text-base{
+    font-size: 16px;
+}
+.flex{
+    display: flex;
+}
+.flex-col{
+    flex-direction: column;
+}
+.align-items-center{
+    align-items: center;
+}
+.justify-content-center{
+    justify-content: center;
+}
+.relative{
+    position: relative;
+}
+.absolute{
+    position: absolute;
+}
+
+.last-border-none:last-child{
+    border-bottom: none;
+}
+
+
+.skeleton-td{
+    padding: 12px;
+}
+
+.empty-data-wrapper{
+    position: relative;
+    height: 280px;
+}
+.empty-data-box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.empty-data{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+}
+.empty-data img{
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+.sort-cell-box{
+    position: absolute;
+    top: 50%;
+    left: 4px;
+    transform: translateY(-50%);
+    margin-top: 3px;
+}
+.up-icon{
+    position: absolute;
+    bottom: -4px;
+}
+.down-icon{
+    position: absolute;
+    top: -4px;
+}
+.not-active-icon svg path{
+    fill: #333333;
+}
+.active-icon svg path {
+    fill: #0984e3;
+}
+.skeleton{
+    height: 28px;
+    border-radius: 4px;
+    background-color: #ededed;
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, .5) 50%,
+    rgba(255, 255, 255, 0) 60%
+  ) #ededed;
+  background-size: 200% 100%;
+  background-position-x: 180%;
+  animation: 1.5s loading ease-in-out infinite;
+}
+
+@keyframes loading {
+    to {
+      background-position-x: -20%;
+    }
+  }
+
+  @keyframes fade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 0.65s;
+}
