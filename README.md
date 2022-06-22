@@ -1,3 +1,149 @@
+# React Aryan Table
+
+#### A full customizable table and easy to filter & sort data with only two provided custom hooks
+
+you can fully customize the ui of your table and you can implement any arbitrary logic for filtering or sorting data (`useFilters` - `useSort `)
+
+## Demo
+
+https://codesandbox.io/s/react-aryan-tabs-zhcmv0
+
+## Usage
+
+```javascript
+import { Table } from "components/table";
+
+export default function App() {
+  const columns =
+    useMemo <
+    TableColumns >
+    (() => [
+      {
+        key: "index",
+        width: "60px",
+        title: "",
+      },
+      {
+        key: "title",
+        title: "Title",
+      },
+      {
+        key: "category",
+        title: "Category",
+      },
+      {
+        key: "duration",
+        title: "Duration",
+        responsive: ["lg"],
+        sort: true,
+      },
+      {
+        key: "price",
+        title: "Price",
+        sort: true,
+        render: (price: number) => <p>{price} USD</p>,
+      },
+      {
+        key: "actions",
+        width: "100px",
+        title: "",
+        responsive: ["lg"],
+        render: (href: string) => <button className="button">More</button>,
+      },
+    ],
+    []);
+
+  const data =
+    useMemo <
+    TableData >
+    (() => [
+      {
+        key: "1",
+        index: "1",
+        title: "Game Of Thrones",
+        category: "Action",
+        duration: 90,
+        price: 250,
+        actions: "/",
+      },
+      {
+        key: "2",
+        index: "2",
+        title: "Breaking Bad",
+        category: "Action",
+        duration: 70,
+        price: 335,
+        actions: "/",
+      },
+      {
+        key: "3",
+        index: "3",
+        title: "The Boys",
+        category: "Action",
+        duration: 100,
+        price: 200,
+        actions: "/",
+      },
+      {
+        key: "4",
+        index: "4",
+        title: "Dexter",
+        category: "Action",
+        duration: 150,
+        price: 650,
+        actions: "/",
+      },
+      {
+        key: "5",
+        index: "5",
+        title: "Friends",
+        category: "Comedy",
+        duration: 60,
+        price: 50,
+        actions: "/",
+      },
+    ],
+    []);
+
+  return (
+    <div className="App">
+      <div>
+        <h3>Table Example</h3>
+        <Table columns={columns} data={data} />
+      </div>
+
+      <div style={{ margin: "4rem 0" }}>
+        <h3>Loading Example</h3>
+        <Table isLoading columns={columns} data={data} />
+      </div>
+
+      <div>
+        <h3>Empty Example</h3>
+        <Table columns={columns} data={data?.slice(0, 0)} />
+      </div>
+    </div>
+  );
+}
+```
+
+## API Reference
+
+| Parameter          | Type                                       | Required | Description                                                                   |
+| :----------------- | :----------------------------------------- | :------- | :---------------------------------------------------------------------------- |
+| `rtl`              | `boolean`                                  | **NO**   | set direction to rtl                                                          |
+| `columns`          | `TableColumns`                             | **YES**  | columns of the table                                                          |
+| `data`             | `TableData`                                | **YES**  | body of the table                                                             |
+| `paginationProps`  | `ReactPaginateProps`                       | **NO**   | a function that takes default styles and returns {...styles, your new styles} |
+| `isLoading`        | `boolean`                                  | **NO**   | toggle between the table loading overlay and the main table ui                |
+| `wrapperStyles`    | `(styles: CSSProperties) => CSSProperties` | **NO**   | a function that takes default styles and returns {...styles, your new styles} |
+| `tableStyles`      | `(styles: CSSProperties) => CSSProperties` | **NO**   | a function that takes default styles and returns {...styles, your new styles} |
+| `headerRowStyles`  | `(styles: CSSProperties) => CSSProperties` | **NO**   | a function that takes default styles and returns {...styles, your new styles} |
+| `headerCellStyles` | `(styles: CSSProperties) => CSSProperties` | **NO**   | a function that takes default styles and returns {...styles, your new styles} |
+| `bodyRowStyles`    | `(styles: CSSProperties) => CSSProperties` | **NO**   | a function that takes default styles and returns {...styles, your new styles} |
+| `bodyCellStyles`   | `(styles: CSSProperties) => CSSProperties` | **NO**   | a function that takes default styles and returns {...styles, your new styles} |
+
+## Installation
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -38,9 +184,3 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
