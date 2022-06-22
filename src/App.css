@@ -12,27 +12,17 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.button{
+  outline: none;
+  background-color: transparent;
+  border: 1px solid #ccc;
+  padding: 0.2rem 1rem;
+  font-size: 14px;
+  border-radius: 5px;
+  color: rgb(51, 51, 51);
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
+

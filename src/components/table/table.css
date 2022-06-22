@@ -21,9 +21,9 @@
 }
 
 .last-border-none:last-child{
-    border-bottom: none;
+    border-color:  transparent !important;
+    
 }
-
 
 .skeleton-td{
     padding: 12px;
@@ -31,7 +31,7 @@
 
 .empty-data-wrapper{
     position: relative;
-    height: 280px;
+    height: 400px;
 }
 .empty-data-box{
     position: absolute;
@@ -106,4 +106,46 @@
 .fade {
     animation-name: fade;
     animation-duration: 0.65s;
+}
+.xs{
+    display: none;
+}
+.sm{
+    display: none;
+}
+.md{
+    display: none;
+}
+.lg{
+    display: none;
+}
+.xl{
+    display: none;
+}
+
+
+@media (max-width:575px) {
+    .xs{
+        display: table-cell;
+    } 
+}
+@media (min-width:576px) {
+    .sm{
+        display: table-cell;
+    } 
+}
+@media (min-width:768px) {
+    .md{
+        display: table-cell;
+    } 
+}
+@media (min-width:1024px) {
+    .lg{
+        display: table-cell;
+    } 
+}
+@media (min-width:1280px) {
+    .xl{
+        display: table-cell;
+    } 
 }

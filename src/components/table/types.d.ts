@@ -3,8 +3,8 @@ import { ReactNode } from "react";
 export type TableColumns = {
   title: string | ReactNode;
   key: string;
+  responsive?: Array<"xs" | "sm" | "md" | "lg" | "xl">;
   sort?: boolean;
-  sortAs?: "number" | "string";
   width?: string;
   render?: (arg: any) => void;
 }[];

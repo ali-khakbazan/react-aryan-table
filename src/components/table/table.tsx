@@ -91,7 +91,7 @@ export const Table: React.FC<Props> = ({
       textAlign: rtl ? "right" : "left",
       fontSize: "15px",
       color: "#333333",
-      padding: "12px 14px",
+      padding: "8px 14px",
     };
 
     if (headerCellStyles) {
@@ -135,8 +135,11 @@ export const Table: React.FC<Props> = ({
           <thead>
             <tr style={headerRowStylesBox}>
               {columns?.map((col, idx) => {
+                const responsive = col?.responsive?.join(" ");
+
                 return (
                   <th
+                    className={responsive}
                     style={{ width: col.width, ...headerCellStylesBox }}
                     key={`cols-col-${idx}-key-${col?.key}`}
                   >
@@ -187,19 +190,26 @@ export const Table: React.FC<Props> = ({
           </thead>
 
           <tbody>
-            {Array.from({ length: 10 }, (row, idx) => (
-              <tr
-                style={bodyRowStylesBox}
-                key={`loading-row-${idx}`}
-                className="last-border-none"
-              >
-                {Array.from({ length: columns.length }, (cell, idx) => (
-                  <td key={`loading-cell-${idx}`} className="skeleton-td">
-                    <div className="skeleton"></div>
-                  </td>
-                ))}
-              </tr>
-            ))}
+            {Array.from({ length: 10 }, (row, rowIDX) => {
+              return (
+                <tr
+                  style={bodyRowStylesBox}
+                  key={`loading-row-${rowIDX}`}
+                  className="last-border-none"
+                >
+                  {Array.from({ length: columns.length }, (cell, cellIDX) => {
+                    return (
+                      <td
+                        key={`loading-cell-${cellIDX}`}
+                        className={`skeleton-td`}
+                      >
+                        <div className="skeleton"></div>
+                      </td>
+                    );
+                  })}
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
@@ -213,11 +223,13 @@ export const Table: React.FC<Props> = ({
           <thead>
             <tr style={headerRowStylesBox}>
               {columns?.map((col, idx) => {
+                const responsive = col?.responsive?.join(" ");
                 return (
                   <th
                     style={{ width: col.width, ...headerCellStylesBox }}
                     onClick={() => handleSort(col.sort ?? false, col.key)}
                     key={`cols-col-${idx}-key-${col?.key}`}
+                    className={responsive}
                   >
                     <div className="flex align-items-center">
                       <p>{col?.title}</p>
@@ -259,17 +271,21 @@ export const Table: React.FC<Props> = ({
           </thead>
 
           <tbody>
-            {items?.map((row, idx) => {
+            {items?.map((row, rowIDX) => {
               return (
                 <tr
                   style={bodyRowStylesBox}
-                  key={`rows-row-${idx}-key-${row.key}`}
+                  key={`rows-row-${rowIDX}-key-${row.key}`}
                   className="last-border-none fade"
                 >
-                  {Object.entries(row).map(([key, value], idx) => {
+                  {Object.entries(row).map(([key, value], cellIDX) => {
                     const withRender = columns
                       .find((el) => el.key === key)
                       ?.render?.(value);
+
+                    const responsive = columns
+                      ?.find((el) => el.key === key)
+                      ?.responsive?.join(" ");
 
                     if (key === "key") {
                       return null;
@@ -277,8 +293,9 @@ export const Table: React.FC<Props> = ({
 
                     return (
                       <td
+                        className={responsive}
                         style={bodyCellStylesBox}
-                        key={`cells-cell-${idx}-key-${key}`}
+                        key={`cells-cell-${cellIDX}-key-${key}`}
                       >
                         {withRender ? withRender : value}
                       </td>

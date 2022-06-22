@@ -22,6 +22,7 @@ function App() {
       {
         key: "duration",
         title: "Duration",
+        responsive: ["lg"],
         sort: true,
       },
       {
@@ -29,6 +30,13 @@ function App() {
         title: "Price",
         sort: true,
         render: (price: number) => <p>{price} USD</p>,
+      },
+      {
+        key: "actions",
+        width: "100px",
+        title: "",
+        responsive: ["lg"],
+        render: (href: string) => <button className="button">More</button>,
       },
     ],
     []
@@ -43,6 +51,7 @@ function App() {
         category: "Action",
         duration: 90,
         price: 250,
+        actions: "/",
       },
       {
         key: "2",
@@ -51,6 +60,7 @@ function App() {
         category: "Action",
         duration: 70,
         price: 335,
+        actions: "/",
       },
       {
         key: "3",
@@ -59,6 +69,7 @@ function App() {
         category: "Action",
         duration: 100,
         price: 200,
+        actions: "/",
       },
       {
         key: "4",
@@ -67,6 +78,7 @@ function App() {
         category: "Action",
         duration: 150,
         price: 650,
+        actions: "/",
       },
       {
         key: "5",
@@ -75,6 +87,7 @@ function App() {
         category: "Comedy",
         duration: 60,
         price: 50,
+        actions: "/",
       },
     ],
     []
@@ -82,7 +95,20 @@ function App() {
 
   return (
     <div className="App">
-      <Table columns={columns} data={data} />
+      <div>
+        <h3>Table Example</h3>
+        <Table columns={columns} data={data} />
+      </div>
+
+      <div style={{ margin: "4rem 0" }}>
+        <h3>Loading Example</h3>
+        <Table isLoading columns={columns} data={data} />
+      </div>
+
+      <div>
+        <h3>Empty Example</h3>
+        <Table columns={columns} data={data?.slice(0, 0)} />
+      </div>
     </div>
   );
 }
