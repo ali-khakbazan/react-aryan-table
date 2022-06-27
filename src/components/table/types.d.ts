@@ -16,9 +16,4 @@ export type TableData =
     }[]
   | undefined;
 
-export type TableMoreItemProps = {
-  title: string;
-  link?: string;
-  onClick?: () => void;
-  type: "view" | "edit" | "delete";
-};
+

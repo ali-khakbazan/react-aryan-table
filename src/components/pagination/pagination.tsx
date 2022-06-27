@@ -1,6 +1,6 @@
 import ReactPaginate, { ReactPaginateProps } from "react-paginate";
 
-type Props = {} & ReactPaginateProps;
+type Props = ReactPaginateProps;
 
 export const Pagination: React.FC<Props> = ({ ...props }) => {
   return (

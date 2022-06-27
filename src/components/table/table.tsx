@@ -11,7 +11,6 @@ type Props = {
   columns: TableColumns;
   data: TableData;
   paginationProps?: ReactPaginateProps;
-  onPageChange?: (arg: { selected: number }) => void;
   isLoading?: boolean;
   wrapperStyles?: (styles: CSSProperties) => CSSProperties;
   tableStyles?: (styles: CSSProperties) => CSSProperties;
