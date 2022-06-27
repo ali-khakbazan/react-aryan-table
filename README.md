@@ -6,7 +6,7 @@ you can fully customize the ui of your table and you can implement any arbitrary
 
 ## Demo
 
-https://codesandbox.io/s/react-aryan-tabs-zhcmv0
+https://codesandbox.io/s/react-aryan-table-t4lghw
 
 ## Usage
 
