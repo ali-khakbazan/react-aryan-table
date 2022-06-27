@@ -11,9 +11,13 @@ https://codesandbox.io/s/react-aryan-table-t4lghw
 ## Usage
 
 ```javascript
-import { Table } from "components/table";
+import { useMemo } from "react";
+import "./App.css";
+import { FilterExample } from "./common/filter-example";
+import { Table } from "./components/table/table";
+import { TableColumns, TableData } from "./components/table/types";
 
-export default function App() {
+function App() {
   const columns =
     useMemo <
     TableColumns >
@@ -30,6 +34,14 @@ export default function App() {
       {
         key: "category",
         title: "Category",
+      },
+      {
+        key: "Writer",
+        title: "writer",
+      },
+      {
+        key: "Producer",
+        title: "producer",
       },
       {
         key: "duration",
@@ -62,6 +74,8 @@ export default function App() {
         index: "1",
         title: "Game Of Thrones",
         category: "Action",
+        writer: "jack",
+        producer: "nolan",
         duration: 90,
         price: 250,
         actions: "/",
@@ -71,6 +85,8 @@ export default function App() {
         index: "2",
         title: "Breaking Bad",
         category: "Action",
+        writer: "sam",
+        producer: "nolan",
         duration: 70,
         price: 335,
         actions: "/",
@@ -80,6 +96,8 @@ export default function App() {
         index: "3",
         title: "The Boys",
         category: "Action",
+        writer: "mark",
+        producer: "maxi",
         duration: 100,
         price: 200,
         actions: "/",
@@ -89,6 +107,8 @@ export default function App() {
         index: "4",
         title: "Dexter",
         category: "Action",
+        writer: "daniel",
+        producer: "jack",
         duration: 150,
         price: 650,
         actions: "/",
@@ -98,6 +118,8 @@ export default function App() {
         index: "5",
         title: "Friends",
         category: "Comedy",
+        writer: "nolan",
+        producer: "nolan",
         duration: 60,
         price: 50,
         actions: "/",
@@ -108,25 +130,51 @@ export default function App() {
   return (
     <div className="App">
       <div>
-        <h3>Table Example</h3>
+        <FilterExample />
+      </div>
+
+      <div>
+        <h3>Basic</h3>
         <Table columns={columns} data={data} />
       </div>
 
       <div style={{ margin: "4rem 0" }}>
-        <h3>Loading Example</h3>
+        <h3>Loading</h3>
         <Table isLoading columns={columns} data={data} />
       </div>
 
       <div>
-        <h3>Empty Example</h3>
+        <h3>Empty</h3>
         <Table columns={columns} data={data?.slice(0, 0)} />
       </div>
     </div>
   );
 }
+
+export default App;
 ```
 
-## API Reference
+### some types that is used in the API References
+
+```typescript
+type TableColumns = {
+  title: string | ReactNode;
+  key: string;
+  responsive?: Array<"xs" | "sm" | "md" | "lg" | "xl">;
+  sort?: boolean;
+  width?: string;
+  render?: (arg: any) => void;
+}[];
+
+type TableData =
+  | {
+      [objKey: string]: any;
+      key: string;
+    }[]
+  | undefined;
+```
+
+## API Reference (`Table component`)
 
 | Parameter          | Type                                       | Required | Description                                                                   |
 | :----------------- | :----------------------------------------- | :------- | :---------------------------------------------------------------------------- |
@@ -141,6 +189,12 @@ export default function App() {
 | `headerCellStyles` | `(styles: CSSProperties) => CSSProperties` | **NO**   | a function that takes default styles and returns {...styles, your new styles} |
 | `bodyRowStyles`    | `(styles: CSSProperties) => CSSProperties` | **NO**   | a function that takes default styles and returns {...styles, your new styles} |
 | `bodyCellStyles`   | `(styles: CSSProperties) => CSSProperties` | **NO**   | a function that takes default styles and returns {...styles, your new styles} |
+
+## API Reference (`useFilters hook`)
+
+| Parameter | Type    | Required | Description                     |
+| :-------- | :------ | :------- | :------------------------------ |
+| `items`   | `any[]` | **YES**  | for creating a filterable array |
 
 ## Installation
 
