@@ -1,6 +1,12 @@
 {
-  "name": "my-app",
+  "name": "react-aryan-table",
+  "description":"react aryan table - A full customizable table and easy to filter & sort data with only two provided custom hooks",
+  "author": {
+    "name": "Ali Khakbazan",
+    "url": "https://github.com/ali-khakbazan"
+  },
   "version": "0.1.0",
+  "keywords": ["react aryan table","react table","react filterable table","react sortable table","react","javascript"],
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
